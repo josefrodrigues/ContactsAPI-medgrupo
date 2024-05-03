@@ -1,0 +1,6 @@
+@ContactsAPI_medgrupo_HostAddress = http://localhost:5229
+
+GET {{ContactsAPI_medgrupo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
