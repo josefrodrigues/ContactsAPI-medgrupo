@@ -26,6 +26,7 @@ namespace ContactsAPI_medgrupo.Application.Controllers
         }
 
         [HttpPost]
+        [Route("/criar-contato")]
         public IActionResult CriarNovoContato(ContactViewModel contactView)
         {
             var birthday = _contactService.convertStringToDateTime(contactView.DataNascimento);
@@ -40,6 +41,7 @@ namespace ContactsAPI_medgrupo.Application.Controllers
 
         //Retorna todos os contatos cadastrados com status Ativo, exibindo somente ID e Nome na lista.
         [HttpGet]
+        [Route("/get/listar-todos")]
         public IActionResult ListarTodosOsContatos() 
         { 
             var contacts = _contactRepository.GetAll();
@@ -50,7 +52,7 @@ namespace ContactsAPI_medgrupo.Application.Controllers
 
         //Retorna detalhes do contato utilizando o ID encontrado na lista de contados como parametro da pesquisa.
         [HttpGet]
-        [Route("{id}")]
+        [Route("/get/{id}")]
         public IActionResult DetalhesContatoById(int id)
         {
             var contact = _contactRepository.GetContactById(id);
@@ -60,6 +62,7 @@ namespace ContactsAPI_medgrupo.Application.Controllers
         }
 
         [HttpPatch]
+        [Route("/desativar")]
         public IActionResult DesativarContato(int id)
         {
             _contactRepository.DisableContact(id);
